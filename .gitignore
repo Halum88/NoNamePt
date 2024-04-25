@@ -2,3 +2,4 @@ venv
 .env
 data
 docker-compose.yml
+test_gpt.py
