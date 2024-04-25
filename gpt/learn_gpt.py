@@ -37,7 +37,7 @@ def extract_messages():
     return messages
 
 
-
+# ref token text
 def process_messages(messages):
     for text in messages:
         input_ids = tokenizer.encode(text[0], return_tensors="pt")
