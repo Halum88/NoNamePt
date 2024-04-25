@@ -9,8 +9,8 @@ load_dotenv()
 
 bot_API = os.getenv("TELEGRAM_BOT_TOKEN")
 
-tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
-model = GPT2LMHeadModel.from_pretrained("gpt2", pad_token_id=tokenizer.eos_token_id)
+tokenizer = GPT2Tokenizer.from_pretrained("gpt2-medium")
+model = GPT2LMHeadModel.from_pretrained("gpt2-medium", pad_token_id=tokenizer.eos_token_id)
 
 bot_token = bot_API
 bot = telebot.TeleBot(bot_token)
@@ -52,7 +52,7 @@ def save_message_to_database(message):
         print("Failed to connect to db")
 
 
-# запускаем бота
+# run bot
 try:
     bot.polling(none_stop=True)
 except Exception as e:
