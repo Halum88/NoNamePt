@@ -10,7 +10,7 @@ bot_dir = os.path.join(parent_dir, 'bot')
 sys.path.append(bot_dir)
 
 
-from database import create_connection
+from database import create_connection # type: ignore
 from transformers import GPT2Tokenizer
 
 
