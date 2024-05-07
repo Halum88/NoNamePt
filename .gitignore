@@ -2,3 +2,5 @@ venv
 .env
 data
 source
+log
+fine_tuned

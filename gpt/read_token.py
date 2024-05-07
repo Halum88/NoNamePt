@@ -15,4 +15,4 @@ def read_tokenized_texts(file_path):
 if __name__ == "__main__":
     file_path = f'./source/{filename}'
     tokenized_texts = read_tokenized_texts(file_path)
-    print("Прочитанные токенизированные тексты:", tokenized_texts)
+    print("read token:", tokenized_texts)
