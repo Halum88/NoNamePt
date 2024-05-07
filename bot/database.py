@@ -21,7 +21,6 @@ def create_connection():
             host=DB_HOST,
             port=DB_PORT
         )
-        print("Connection to PostgreSQL DB successful")
     except (Exception, Error) as error:
         print("Error while connecting to PostgreSQL", error)
     return connection
@@ -41,7 +40,7 @@ def create_messages_table(connection):
         """)
         connection.commit()
         cursor.close()
-        print("Table 'messages' created successfully or already exists")
+
     except (Exception, psycopg2.Error) as error:
         print("Error creating table 'messages':", error)
 

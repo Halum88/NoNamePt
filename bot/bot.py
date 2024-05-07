@@ -9,8 +9,8 @@ load_dotenv()
 
 bot_API = os.getenv("TELEGRAM_BOT_TOKEN")
 
-tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
-model = GPT2LMHeadModel.from_pretrained("gpt2", pad_token_id=tokenizer.eos_token_id)
+tokenizer = GPT2Tokenizer.from_pretrained("gpt2-medium")
+model = GPT2LMHeadModel.from_pretrained("gpt2-medium", pad_token_id=tokenizer.eos_token_id)
 
 bot_token = bot_API
 bot = telebot.TeleBot(bot_token)
@@ -27,17 +27,16 @@ def greet_user(message):
     try:
         response = generate_response(message.text)
         bot.send_message(message.chat.id, response)
-        save_message_to_database(message)  # сохраняем сообщение в базу данных
+        save_message_to_database(message)  # save message in db
     except Exception as e:
         print(f"An error occurred greet_user: {e}")
 
 
 def save_message_to_database(message):
-    # сохраняем сообщение в базу данных
     connection = create_connection()
     if connection:
         try:
-            create_messages_table(connection)  # создаем таблицу (если ее еще нет)
+            create_messages_table(connection)  # create table if is not
             cursor = connection.cursor()
             cursor.execute("INSERT INTO messages (user_id, username, text) VALUES (%s, %s, %s)", 
                            (message.from_user.id, message.from_user.username, message.text))
@@ -53,7 +52,7 @@ def save_message_to_database(message):
         print("Failed to connect to db")
 
 
-# запускаем бота
+# run bot
 try:
     bot.polling(none_stop=True)
 except Exception as e:
